@@ -1,4 +1,4 @@
-# Currently in testing phase.
+### Currently in testing phase.
 
 This script is an attempt to work around the WinMax 2024 issue on BIOS 0.40 whereby the device will wake from sleep after 5% battery drain.
 The script attempts to do the following:
@@ -7,7 +7,7 @@ The script attempts to do the following:
 2. Checks to see if the system is still waking and waits to make sure the wake cycle is finished.
 3. Checks what the current wake status is. If it is "post suspend" it will put it back to sleep. If it is "pre suspend", it will terminate the sleep cycle and then start it again and put it to sleep.
 
-# INSTRUCTIONS
+### INSTRUCTIONS
 
 1. Place this script in /lib/systemd/system-sleep/wakeup-script.sh
 2. Make the script executable: sudo chmod +x /lib/systemd/system-sleep/wakeup-script.sh
