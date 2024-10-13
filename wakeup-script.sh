@@ -12,7 +12,7 @@
 # 1. Place this script in /lib/systemd/system-sleep/
 # 2. Make the script executable: sudo chmod +x /lib/systemd/system-sleep/wakeup-script.sh
 
-# NB: The script will log its actions to the system journal with the tag: SleepPatch. To check, run the command: sudo journalctl -b | grep "SleepPatch"
+# NB: The script will log its actions to the system journal with the tag: SleepPatch. To check, run the command: sudo journalctl | grep "SleepPatch"
 # NB: If you try to wake your device while the lid is closed (eg with external screen attached) this script will put it back to sleep immediately.
 # So if you work with your screen closed, this script is probably not for you.
 #------------------------------------------------------#
