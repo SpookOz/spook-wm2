@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# WM2 Suspend test script v8 - 181024
+# WM2 Suspend test script v9 - 221024
 
 # Variables
 sleeptime=2
@@ -10,7 +10,13 @@ battery_level=$(cat /sys/class/power_supply/BAT0/capacity)
 logger "SleepPatch: Waiting $sleeptime seconds to wait for system to wake up."
 sleep $sleeptime
 
-# Check if the lid state file exists first
+# Check the sleep state
+logger "SleepPatch: Arguments passed: $1 $2."
+
+# Check battery level
+logger "SleepPatch: Battery level: $battery_level%."
+
+# Check if the lid state file exists
 if [ ! -f /proc/acpi/button/lid/*/state ]; then
     logger "SleepPatch: Lid state file not found. Exiting script."
     exit 1
@@ -22,12 +28,9 @@ if [ -z "$lid_state" ]; then
     logger "SleepPatch: Unable to determine lid state. Exiting script."
     exit 1
 elif [ "$lid_state" = "open" ]; then
-    logger "SleepPatch: Lid is open. Nothing to do."
+    logger "SleepPatch: Lid is open. Finishing script."
     exit 0
 else
-    logger "SleepPatch: Lid is closed. Checking wake arguments."
-    logger "SleepPatch: Arguments passed: $1 $2."
-    logger "SleepPatch: Battery level: $battery_level%."
-    logger "SleepPatch: Finishing script."
+    logger "SleepPatch: Lid is closed. Finishing script."
     exit 0
 fi
